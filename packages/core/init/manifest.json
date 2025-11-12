@@ -5,5 +5,5 @@
   "version": "1.0.0",
   "description": "KnightOS init program",
   "copyright": "MIT/X11",
-  "dependencies": ["core/init", "core/kernel-headers"]
+  "dependencies": []
 }
