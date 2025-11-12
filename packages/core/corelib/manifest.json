@@ -1,0 +1,9 @@
+{
+  "name": "corelib",
+  "repo": "core",
+  "full_name": "core/corelib",
+  "version": "0.6.4",
+  "description": "Core KnightOS user and system interaction library",
+  "copyright": "MIT/X11",
+  "dependencies": ["core/configlib"]
+}

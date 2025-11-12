@@ -1,0 +1,9 @@
+{
+  "name": "textview",
+  "repo": "core",
+  "full_name": "core/textview",
+  "version": "1.0.1",
+  "description": "A simple text viewer",
+  "copyright": "MIT/X11",
+  "dependencies": ["core/corelib"]
+}

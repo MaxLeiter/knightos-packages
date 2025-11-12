@@ -1,0 +1,9 @@
+{
+  "name": "settings",
+  "repo": "core",
+  "full_name": "core/settings",
+  "version": "0.5.3",
+  "description": "KnightOS global settings management",
+  "copyright": "MIT/X11",
+  "dependencies": ["core/configlib", "core/corelib"]
+}

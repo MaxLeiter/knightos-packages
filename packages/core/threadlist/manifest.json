@@ -1,0 +1,9 @@
+{
+  "name": "threadlist",
+  "repo": "core",
+  "full_name": "core/threadlist",
+  "version": "1.0.1",
+  "description": "KnightOS thread switching application",
+  "copyright": "MIT/X11",
+  "dependencies": []
+}

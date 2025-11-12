@@ -1,0 +1,9 @@
+{
+  "name": "configlib",
+  "repo": "core",
+  "full_name": "core/configlib",
+  "version": "0.1.1",
+  "description": "Unix config file maintenance library",
+  "copyright": "MIT/X11",
+  "dependencies": []
+}

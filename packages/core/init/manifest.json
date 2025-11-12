@@ -1,0 +1,9 @@
+{
+  "name": "init",
+  "repo": "core",
+  "full_name": "core/init",
+  "version": "1.0.0",
+  "description": "KnightOS init program",
+  "copyright": "MIT/X11",
+  "dependencies": []
+}

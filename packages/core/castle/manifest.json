@@ -1,0 +1,9 @@
+{
+  "name": "castle",
+  "repo": "core",
+  "full_name": "core/castle",
+  "version": "0.5.4",
+  "description": "KnightOS program launcher",
+  "copyright": "MIT/X11",
+  "dependencies": ["core/corelib", "core/configlib"]
+}

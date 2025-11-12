@@ -1,36 +1,165 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KnightOS Package Registry
 
-## Getting Started
+An alternative package registry for KnightOS. This registry was created because the official `packages.knightos.org` is currently down. This registry provides the same API interface and serves pre-built packages from the KnightOS ecosystem.
 
-First, run the development server:
+## Available Packages
+
+Currently hosting:
+
+**Core packages:**
+
+- `core/corelib` - Core KnightOS user and system interaction library
+- `core/configlib` - Configuration management library
+- `core/castle` - KnightOS program launcher (desktop environment)
+- `core/init` - Init system
+- `core/threadlist` - Task switcher application
+- `core/settings` - System settings application
+- `core/textview` - Text file viewer
+
+**Extra packages:**
+
+- `extra/fileman` - File manager application
+- `extra/periodic` - Periodic table of elements application
+
+## Usage with KnightOS SDK
+
+### Setup
+
+Set the custom repository URL as an environment variable:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+export KNIGHTOS_REPOSITORY_URL=https://knightos-packages.vercel.app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Or add to your shell config (e.g., `~/.bashrc`, `~/.zshrc`, `~/.config/fish/config.fish`):
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Bash/Zsh
+export KNIGHTOS_REPOSITORY_URL=https://knightos-packages.vercel.app
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Fish
+set -x KNIGHTOS_REPOSITORY_URL https://knightos-packages.vercel.app
+```
 
-## Learn More
+### Install Packages
 
-To learn more about Next.js, take a look at the following resources:
+Once configured, use the KnightOS SDK normally:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+knightos install core/corelib
+knightos install core/castle
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## API Endpoints
 
-## Deploy on Vercel
+The registry implements the same API as the official KnightOS package registry:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `GET /api/v1/:repo/:name` - Returns package manifest as JSON
+- `GET /:repo/:name/download` - Downloads the `.pkg` file
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Development
+
+This is a Next.js 16 application built with TypeScript and Tailwind CSS.
+
+### Prerequisites
+
+- Node.js 18+
+- pnpm
+
+### Install Dependencies
+
+```bash
+pnpm install
+```
+
+### Run Development Server
+
+```bash
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the registry.
+
+### Build for Production
+
+```bash
+pnpm build
+```
+
+## Adding New Packages
+
+To add new packages to the registry:
+
+1. Build the package using the KnightOS SDK to create a `.pkg` file
+2. Run the import script:
+
+```bash
+./scripts/import-packages.sh
+```
+
+This script:
+
+- Reads `package.config` from each KnightOS package directory
+- Generates `manifest.json` files
+- Copies `.pkg` files to the appropriate location in `packages/`
+
+### Manual Package Addition
+
+Alternatively, create the directory structure manually:
+
+```bash
+packages/
+└── repo-name/
+    └── package-name/
+        ├── manifest.json
+        └── package-name-version.pkg
+```
+
+Example `manifest.json`:
+
+```json
+{
+  "name": "corelib",
+  "repo": "core",
+  "full_name": "core/corelib",
+  "version": "0.6.4",
+  "description": "Core KnightOS user and system interaction library",
+  "copyright": "MIT/X11",
+  "dependencies": ["core/configlib"]
+}
+```
+
+## Deployment
+
+This project is designed to be deployed on Vercel:
+
+```bash
+vercel --prod
+```
+
+The registry is a static Next.js app with dynamic API routes, making it ideal for serverless deployment.
+
+## SDK Modifications
+
+This registry requires a modified version of the KnightOS SDK that supports custom repository URLs via the `KNIGHTOS_REPOSITORY_URL` environment variable.
+
+The modifications are minimal:
+
+- Added `_repository_url` variable to `knightos/repository.py`
+- Updated two URL references to use the configurable repository
+
+These changes maintain backward compatibility with the official registry.
+
+## License
+
+This registry implementation is MIT licensed. Individual packages retain their original licenses (see each package's manifest for details).
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit issues or pull requests.
+
+## Links
+
+- [KnightOS Official Site](https://knightos.org/)
+- [KnightOS GitHub](https://github.com/KnightOS)
+- [KnightOS SDK](https://github.com/KnightOS/sdk)
