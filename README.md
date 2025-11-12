@@ -2,29 +2,6 @@
 
 An alternative package registry for KnightOS. This registry was created because the official `packages.knightos.org` is currently down. This registry provides the same API interface and serves pre-built packages from the KnightOS ecosystem.
 
-## Available Packages
-
-Currently hosting 11 packages:
-
-**Core packages:**
-
-- `core/corelib` - Core KnightOS user and system interaction library
-- `core/configlib` - Configuration management library
-- `core/castle` - KnightOS program launcher (desktop environment)
-- `core/init` - Init system
-- `core/threadlist` - Task switcher application
-- `core/settings` - System settings application
-- `core/textview` - Text file viewer
-
-**Extra packages:**
-
-- `extra/fileman` - File manager application
-- `extra/periodic` - Periodic table of elements application
-
-**Ports packages:**
-
-- `ports/phoenix` - The popular space shoot-em-up arcade game ported to KnightOS
-
 ## Usage with KnightOS SDK
 
 ### Setup
