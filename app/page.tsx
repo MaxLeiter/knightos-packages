@@ -83,9 +83,10 @@ export default async function Home() {
           </h2>
           <div className="grid gap-4">
             {packages.map((pkg) => (
-              <div
+              <Link
                 key={pkg.full_name}
-                className="border border-zinc-200 dark:border-zinc-800 rounded-lg p-4 hover:border-zinc-400 dark:hover:border-zinc-600 transition bg-white dark:bg-zinc-900"
+                href={`/package/${pkg.repo}/${pkg.name}`}
+                className="border border-zinc-200 dark:border-zinc-800 rounded-lg p-4 hover:border-zinc-400 dark:hover:border-zinc-600 transition bg-white dark:bg-zinc-900 block"
               >
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
@@ -95,24 +96,10 @@ export default async function Home() {
                     v{pkg.version}
                   </span>
                 </div>
-                <p className="text-zinc-600 dark:text-zinc-400 mb-3 text-sm">
+                <p className="text-zinc-600 dark:text-zinc-400 text-sm">
                   {pkg.description}
                 </p>
-                <div className="flex gap-4 text-sm">
-                  <Link
-                    href={`/api/v1/${pkg.repo}/${pkg.name}`}
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                  >
-                    View Manifest
-                  </Link>
-                  <Link
-                    href={`/${pkg.repo}/${pkg.name}/download`}
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                  >
-                    Download .pkg
-                  </Link>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

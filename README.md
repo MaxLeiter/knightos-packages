@@ -4,7 +4,7 @@ An alternative package registry for KnightOS. This registry was created because 
 
 ## Available Packages
 
-Currently hosting:
+Currently hosting 11 packages:
 
 **Core packages:**
 
@@ -20,6 +20,10 @@ Currently hosting:
 
 - `extra/fileman` - File manager application
 - `extra/periodic` - Periodic table of elements application
+
+**Ports packages:**
+
+- `ports/phoenix` - The popular space shoot-em-up arcade game ported to KnightOS
 
 ## Usage with KnightOS SDK
 
