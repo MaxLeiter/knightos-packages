@@ -1,0 +1,9 @@
+{
+  "name": "kernel-headers",
+  "repo": "core",
+  "full_name": "core/kernel-headers",
+  "version": "0.6.11",
+  "description": "Development headers for the KnightOS kernel",
+  "copyright": "Public Domain",
+  "dependencies": []
+}
