@@ -1,0 +1,9 @@
+{
+  "name": "phoenix",
+  "repo": "ports",
+  "full_name": "ports/phoenix",
+  "version": "0.4.0",
+  "description": "The popular space shoot-em-up arcade game ported to KnightOS",
+  "copyright": "Public Domain",
+  "dependencies": ["core/corelib"]
+}
