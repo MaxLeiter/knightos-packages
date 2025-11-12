@@ -1,0 +1,9 @@
+{
+  "name": "calcsys",
+  "repo": "extra",
+  "full_name": "extra/calcsys",
+  "version": "0.3.0",
+  "description": "",
+  "copyright": "",
+  "dependencies": ["core/corelib"]
+}
