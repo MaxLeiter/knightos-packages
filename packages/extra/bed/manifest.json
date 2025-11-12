@@ -1,0 +1,9 @@
+{
+  "name": "bed",
+  "repo": "extra",
+  "full_name": "extra/bed",
+  "version": "0.4.1",
+  "description": "\"bed\" is a basic editor for KnightOS.",
+  "copyright": "MIT/X11",
+  "dependencies": ["core/corelib"]
+}
