@@ -50,7 +50,7 @@ import_package() {
     local name=$(grep "^name=" "$pkg_dir/package.config" | cut -d= -f2)
     local repo=$(grep "^repo=" "$pkg_dir/package.config" | cut -d= -f2)
     local version=$(grep "^version=" "$pkg_dir/package.config" | cut -d= -f2)
-    local description=$(grep "^description=" "$pkg_dir/package.config" | cut -d= -f2)
+    local description=$(grep "^description=" "$pkg_dir/package.config" | cut -d= -f2 | sed 's/"/\\"/g')
     local copyright=$(grep "^copyright=" "$pkg_dir/package.config" | cut -d= -f2)
     local dependencies=$(grep "^dependencies=" "$pkg_dir/package.config" | cut -d= -f2)
 
