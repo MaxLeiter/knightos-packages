@@ -5,5 +5,5 @@
   "version": "1.0.1",
   "description": "KnightOS thread switching application",
   "copyright": "MIT/X11",
-  "dependencies": ["core/init", "core/kernel-headers", "core/castle"]
+  "dependencies": []
 }
