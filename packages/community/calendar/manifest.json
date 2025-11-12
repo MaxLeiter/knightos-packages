@@ -1,0 +1,9 @@
+{
+  "name": "calendar",
+  "repo": "community",
+  "full_name": "community/calendar",
+  "version": "0.2.0",
+  "description": "",
+  "copyright": "",
+  "dependencies": ["core/corelib"]
+}
