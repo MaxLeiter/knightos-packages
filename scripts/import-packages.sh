@@ -5,31 +5,36 @@ set -e
 
 # Show help message
 if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-    echo "Usage: $0 [repo-base-path]"
+    echo "Usage: $0 <package-path>"
     echo ""
-    echo "Import KnightOS packages from a directory containing knightos-* subdirectories."
+    echo "Import a KnightOS package from a directory containing package.config."
     echo ""
     echo "Arguments:"
-    echo "  repo-base-path    Path to directory containing knightos-* repos (default: current directory)"
+    echo "  package-path    Path to the package directory"
     echo ""
     echo "Examples:"
-    echo "  $0                              # Import from current directory"
-    echo "  $0 /path/to/knightos/repos      # Import from specific path"
-    echo "  $0 ~/Documents                  # Import from ~/Documents"
+    echo "  $0 /path/to/fileman"
+    echo "  $0 ~/Documents/knightos-textview"
     exit 0
 fi
 
-# Default to current directory, or accept argument
-REPO_BASE="${1:-$(pwd)}"
-PACKAGES_DIR="$(dirname "$0")/../packages"
-
-# Validate that the repo base exists
-if [ ! -d "$REPO_BASE" ]; then
-    echo "Error: Directory not found: $REPO_BASE"
+# Require package path argument
+if [ -z "$1" ]; then
+    echo "Error: Package path is required"
+    echo "Usage: $0 <package-path>"
     exit 1
 fi
 
-echo "Importing KnightOS packages from: $REPO_BASE"
+PKG_DIR="$1"
+PACKAGES_DIR="$(dirname "$0")/../packages"
+
+# Validate that the package directory exists
+if [ ! -d "$PKG_DIR" ]; then
+    echo "Error: Directory not found: $PKG_DIR"
+    exit 1
+fi
+
+echo "Importing KnightOS package from: $PKG_DIR"
 
 # Function to parse package.config and create manifest.json
 import_package() {
@@ -104,24 +109,10 @@ EOF
     echo ""
 }
 
-# Import all packages
-package_count=0
-for dir in "$REPO_BASE"/knightos-*; do
-    if [ -d "$dir" ] && [ "$dir" != "$REPO_BASE/knightos-sdk" ] && [ "$dir" != "$REPO_BASE/knightos-kernel" ]; then
-        echo "Processing: $(basename "$dir")"
-        import_package "$dir"
-        ((package_count++))
-    fi
-done
+# Import the package
+import_package "$PKG_DIR"
 
-if [ $package_count -eq 0 ]; then
-    echo ""
-    echo "Warning: No knightos-* directories found in $REPO_BASE"
-    echo "Make sure you're pointing to the correct directory containing KnightOS package repos."
-    exit 1
-fi
-
-echo "Package import complete! Imported $package_count package(s)."
+echo "Package import complete!"
 echo ""
 echo "Packages directory structure:"
 tree -L 3 "$PACKAGES_DIR" 2>/dev/null || find "$PACKAGES_DIR" -type f | sort
