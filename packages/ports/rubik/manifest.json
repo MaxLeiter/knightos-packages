@@ -1,0 +1,9 @@
+{
+  "name": "rubik",
+  "repo": "ports",
+  "full_name": "ports/rubik",
+  "version": "0.3.0",
+  "description": "Rubik's cube puzzle for KnightOS",
+  "copyright": "",
+  "dependencies": ["core/corelib", "core/init", "core/kernel-headers"]
+}

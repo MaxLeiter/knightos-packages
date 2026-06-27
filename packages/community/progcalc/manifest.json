@@ -1,0 +1,9 @@
+{
+  "name": "progcalc",
+  "repo": "community",
+  "full_name": "community/progcalc",
+  "version": "0.2.0",
+  "description": "A programmer's calculator for KnightOS. Supports Decimal, Hexadecimal and Binary.",
+  "copyright": "MIT/X11",
+  "dependencies": ["core/corelib", "core/init", "core/kernel-headers"]
+}

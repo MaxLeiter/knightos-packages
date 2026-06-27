@@ -1,0 +1,9 @@
+{
+  "name": "fx3dlib",
+  "repo": "extra",
+  "full_name": "extra/fx3dlib",
+  "version": "1.0.0",
+  "description": "3D graphics library",
+  "copyright": "MIT/X11",
+  "dependencies": ["core/init", "core/kernel-headers"]
+}
